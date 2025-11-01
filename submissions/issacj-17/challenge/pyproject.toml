@@ -1,16 +1,29 @@
 [project]
-name = "challenge"
+name = "transfer_client"
 version = "0.1.0"
-description = "Add your description here"
+description = "HTTP money transfer client (sync/async) with retries, logging, and config"
 readme = "README.md"
 authors = [
     { name = "issacj-17", email = "68261814+issacj-17@users.noreply.github.com" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "httpx>=0.28.1",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.0",
+]
 
 [project.scripts]
-challenge = "challenge:main"
+transfer-client = "transfer_client.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [build-system]
 requires = ["uv_build>=0.9.2,<0.10.0"]
